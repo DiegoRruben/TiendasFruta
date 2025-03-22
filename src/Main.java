@@ -13,27 +13,8 @@ public class Main {
         System.out.println("Tienda De Fruta");
 
 
-        productos[0] = "Manzana";
-        productos[1] = "Plátano";
-        productos[2] = "Naranja";
-        productos[3] = "Fresa";
-        productos[4] = "Mango";
-
-        cantidades[0] = 10;
-        cantidades[1] = 20;
-        cantidades[2] = 15;
-        cantidades[3] = 30;
-        cantidades[4] = 25;
-
-        precios[0] = 1.50;
-        precios[1] = 2.00;
-        precios[2] = 1.75;
-        precios[3] = 3.00;
-        precios[4] = 2.50;
-
-        // Bucle principal
         while (true) {
-            // Menú principal
+
             System.out.println("Inventario de la tienda");
             System.out.println("1. Agregar producto");
             System.out.println("2. Eliminar producto");
@@ -62,13 +43,13 @@ public class Main {
                     }
                     break;
                 case 2:
-                    // Eliminar producto
+
                     System.out.println("Ingrese el nombre del producto a eliminar:");
-                    scanner.nextLine(); // Consumir el salto de línea
+                    scanner.nextLine();
                     String productoEliminar = scanner.nextLine();
                     for (int i = 0; i < 10; i++) {
                         if (productos[i].equals(productoEliminar)) {
-                            // Desplazar los elementos hacia la izquierda
+
                             for (int j = i; j < 9; j++) {
                                 productos[j] = productos[j + 1];
                                 cantidades[j] = cantidades[j + 1];
@@ -81,7 +62,7 @@ public class Main {
                     }
                     break;
                 case 3:
-                    // Mostrar inventario
+
                     System.out.println("Inventario:");
                     for (int i = 0; i < indice; i++) {
                         System.out.println("Producto: " + productos[i]);
@@ -93,7 +74,7 @@ public class Main {
                 case 4:
                     // Buscar producto
                     System.out.println("Ingrese el nombre del producto a buscar:");
-                    scanner.nextLine(); // Consumir el salto de línea
+                    scanner.nextLine();
                     String productoBuscar = scanner.nextLine();
                     boolean encontrado = false;
                     for (int i = 0; i < indice; i++) {
@@ -110,7 +91,7 @@ public class Main {
                     }
                     break;
                 case 5:
-                    // Salir
+
                     System.exit(0);
                     break;
                 default:
