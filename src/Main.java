@@ -5,13 +5,13 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Usamos ArrayList para que el inventario sea dinámico
+
         ArrayList<String> frutas = new ArrayList<>();
         ArrayList<Double> precios = new ArrayList<>();
         ArrayList<Integer> stock = new ArrayList<>();
-        final double IVA = 0.12;
+        final double IVA = 12;
 
-        // Agregamos algunas frutas iniciales
+
         frutas.add("Manzana");
         precios.add(1.00);
         stock.add(15);
@@ -43,18 +43,18 @@ public class Main {
                 System.out.println("Inventario:");
                 for (int i = 0; i < frutas.size(); i++) {
                     double precioConIVA = precios.get(i) * (1 + IVA);
-                    System.out.println((i + 1) + ". " + frutas.get(i) + " - $" + String.format("%.2f", precioConIVA) + " (IVA incluido) - Stock: " + stock.get(i));
+                    System.out.println((i + 1) + ". " + frutas.get(i) + " - Q" + String.format("%.2f", precioConIVA) + " (IVA incluido) - Stock: " + stock.get(i));
                 }
             } else if (opcion == 2) {
 
-                System.out.print("\nIngrese el nombre de la fruta a buscar: ");
+                System.out.print("Ingrese el nombre de la fruta a buscar: ");
                 String nombreBusqueda = scanner.nextLine().toLowerCase();
                 boolean encontrado = false;
 
                 for (int i = 0; i < frutas.size(); i++) {
                     if (frutas.get(i).toLowerCase().equals(nombreBusqueda)) {
                         double precioConIVA = precios.get(i) * (1 + IVA);
-                        System.out.println("Producto encontrado: " + frutas.get(i) + " - $" + String.format("%.2f", precioConIVA) + " - Stock: " + stock.get(i));
+                        System.out.println("Producto encontrado: " + frutas.get(i) + " - Q" + String.format("%.2f", precioConIVA) + " - Stock: " + stock.get(i));
                         encontrado = true;
                         break;
                     }
@@ -65,7 +65,7 @@ public class Main {
                 }
             } else if (opcion == 3) {
 
-                System.out.print("\nIngrese el nombre de la nueva fruta: ");
+                System.out.print("Ingrese el nombre de la nueva fruta: ");
                 String nuevaFruta = scanner.nextLine();
                 System.out.print("Ingrese el precio de " + nuevaFruta + ": ");
                 double nuevoPrecio = scanner.nextDouble();
@@ -78,7 +78,7 @@ public class Main {
                 precios.add(nuevoPrecio);
                 stock.add(nuevoStock);
 
-                System.out.println("Nuevo producto agregado: " + nuevaFruta + " - $" + String.format("%.2f", nuevoPrecio * (1 + IVA)) + " (IVA incluido) - Stock: " + nuevoStock);
+                System.out.println("Nuevo producto agregado: " + nuevaFruta + " - Q" + String.format("%.2f", nuevoPrecio * (1 + IVA)) + " (IVA incluido) - Stock: " + nuevoStock);
             } else if (opcion == 4) {
 
                 System.out.print("Ingrese el nombre de la fruta a eliminar: ");
