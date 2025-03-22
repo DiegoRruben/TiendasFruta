@@ -13,6 +13,27 @@ public class Main {
         System.out.println("Tienda De Fruta");
 
 
+        productos[0] = "Manzana";
+        productos[1] = "Plátano";
+        productos[2] = "Naranja";
+        productos[3] = "Fresa";
+        productos[4] = "Mango";
+        productos[5] = "Uva";
+
+        cantidades[0] = 10;
+        cantidades[1] = 20;
+        cantidades[2] = 15;
+        cantidades[3] = 3;
+        cantidades[4] = 25;
+        cantidades[5] = 13;
+
+        precios[0] = 1.50;
+        precios[1] = 2.00;
+        precios[2] = 1.75;
+        precios[3] = 3.00;
+        precios[4] = 2.50;
+        precios[5] = 5.20;
+
         while (true) {
 
             System.out.println("Inventario de la tienda");
@@ -31,7 +52,7 @@ public class Main {
 
                     if (indice < 10) {
                         System.out.println("Ingrese el nombre del producto:");
-                        scanner.nextLine(); // Consumir el salto de línea
+                        scanner.nextLine();
                         productos[indice] = scanner.nextLine();
                         System.out.println("Ingrese la cantidad del producto:");
                         cantidades[indice] = scanner.nextInt();
@@ -47,7 +68,7 @@ public class Main {
                     System.out.println("Ingrese el nombre del producto a eliminar:");
                     scanner.nextLine();
                     String productoEliminar = scanner.nextLine();
-                    for (int i = 0; i < 10; i++) {
+                    for (int i = 0; i < 9; i++) {
                         if (productos[i].equals(productoEliminar)) {
 
                             for (int j = i; j < 9; j++) {
