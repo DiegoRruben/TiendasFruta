@@ -14,15 +14,15 @@ public class Main {
         // Agregamos algunas frutas iniciales
         frutas.add("Manzana");
         precios.add(1.00);
-        stock.add(10);
+        stock.add(15);
 
         frutas.add("Banana");
         precios.add(0.75);
-        stock.add(15);
+        stock.add(12);
 
         frutas.add("Naranja");
         precios.add(0.80);
-        stock.add(12);
+        stock.add(14);
 
         boolean continuar = true;
 
@@ -40,7 +40,7 @@ public class Main {
 
             if (opcion == 1) {
 
-                System.out.println("\nInventario:");
+                System.out.println("Inventario:");
                 for (int i = 0; i < frutas.size(); i++) {
                     double precioConIVA = precios.get(i) * (1 + IVA);
                     System.out.println((i + 1) + ". " + frutas.get(i) + " - $" + String.format("%.2f", precioConIVA) + " (IVA incluido) - Stock: " + stock.get(i));
@@ -71,7 +71,7 @@ public class Main {
                 double nuevoPrecio = scanner.nextDouble();
                 System.out.print("Ingrese el stock de " + nuevaFruta + ": ");
                 int nuevoStock = scanner.nextInt();
-                scanner.nextLine();  // Limpiar el buffer
+                scanner.nextLine();
 
 
                 frutas.add(nuevaFruta);
@@ -81,7 +81,7 @@ public class Main {
                 System.out.println("Nuevo producto agregado: " + nuevaFruta + " - $" + String.format("%.2f", nuevoPrecio * (1 + IVA)) + " (IVA incluido) - Stock: " + nuevoStock);
             } else if (opcion == 4) {
 
-                System.out.print("\nIngrese el nombre de la fruta a eliminar: ");
+                System.out.print("Ingrese el nombre de la fruta a eliminar: ");
                 String frutaEliminar = scanner.nextLine().toLowerCase();
                 boolean eliminada = false;
 
@@ -100,8 +100,8 @@ public class Main {
                     System.out.println("No se encontró la fruta.");
                 }
             } else if (opcion == 5) {
-                // Salir del programa
-                System.out.println("Gracias por usar el sistema de inventario.");
+
+                System.out.println("Gracias por usar el sistema de Tienda de Frutas Vuelva pronto.");
                 continuar = false;
             } else {
                 System.out.println("Opción no válida, intente nuevamente.");
