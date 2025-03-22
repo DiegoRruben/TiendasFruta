@@ -2,122 +2,90 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // Declaración de variables
-        String[] productos = new String[10];
-        int[] cantidades = new int[10];
-        double[] precios = new double[10];
-        int opcion;
-        int indice = 0;
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Tienda De Fruta");
+        // Arrays para gestionar la información del inventario
+        String[] frutas = {"Manzana", "Banana", "Naranja", "Pera", "Uva"};
+        double[] precios = {1.00, 0.75, 0.80, 1.20, 2.50};  // Precio por unidad
+        int[] stock = {10, 15, 12, 8, 20};
+        final double IVA = 0.12;
 
+        boolean continuar = true;
 
-        productos[0] = "Manzana";
-        productos[1] = "Plátano";
-        productos[2] = "Naranja";
-        productos[3] = "Fresa";
-        productos[4] = "Mango";
-        productos[5] = "Uva";
-
-        cantidades[0] = 10;
-        cantidades[1] = 20;
-        cantidades[2] = 15;
-        cantidades[3] = 3;
-        cantidades[4] = 25;
-        cantidades[5] = 13;
-
-        precios[0] = 1.50;
-        precios[1] = 2.00;
-        precios[2] = 1.75;
-        precios[3] = 3.00;
-        precios[4] = 2.50;
-        precios[5] = 5.20;
-
-        while (true) {
-
-            System.out.println("Inventario de la tienda");
-            System.out.println("1. Agregar producto");
-            System.out.println("2. Eliminar producto");
-            System.out.println("3. Mostrar inventario");
-            System.out.println("4. Buscar producto");
+        while (continuar) {
+            // Menú de opciones
+            System.out.println("Tienda de Frutas");
+            System.out.println("1. Ver productos");
+            System.out.println("2. Buscar un producto");
+            System.out.println("3. Agregar producto");
+            System.out.println("4. Eliminar producto");
             System.out.println("5. Salir");
+            System.out.print("Seleccione una opción: ");
+            int opcion = scanner.nextInt();
+            scanner.nextLine();
 
+            if (opcion == 1) {
 
-            opcion = scanner.nextInt();
+                System.out.println("\nInventario:");
+                for (int i = 0; i < frutas.length; i++) {
+                    double precioConIVA = precios[i] * (1 + IVA);
+                    System.out.println((i + 1) + ". " + frutas[i] + " - $" + String.format("%.2f", precioConIVA) + " (IVA incluido) - Stock: " + stock[i]);
+                }
+            } else if (opcion == 2) {
+                // Buscar producto
+                System.out.print("\nIngrese el nombre de la fruta a buscar: ");
+                String nombreBusqueda = scanner.nextLine().toLowerCase();
+                boolean encontrado = false;
 
-
-            switch (opcion) {
-                case 1:
-
-                    if (indice < 10) {
-                        System.out.println("Ingrese el nombre del producto:");
-                        scanner.nextLine();
-                        productos[indice] = scanner.nextLine();
-                        System.out.println("Ingrese la cantidad del producto:");
-                        cantidades[indice] = scanner.nextInt();
-                        System.out.println("Ingrese el precio del producto:");
-                        precios[indice] = scanner.nextDouble();
-                        indice++;
-                    } else {
-                        System.out.println("No hay espacio disponible en el inventario.");
+                for (int i = 0; i < frutas.length; i++) {
+                    if (frutas[i].toLowerCase().equals(nombreBusqueda)) {
+                        double precioConIVA = precios[i] * (1 + IVA);
+                        System.out.println("Producto encontrado: " + frutas[i] + " - $" + String.format("%.2f", precioConIVA) + " - Stock: " + stock[i]);
+                        encontrado = true;
+                        break;
                     }
-                    break;
-                case 2:
+                }
 
-                    System.out.println("Ingrese el nombre del producto a eliminar:");
-                    scanner.nextLine();
-                    String productoEliminar = scanner.nextLine();
-                    for (int i = 0; i < 9; i++) {
-                        if (productos[i].equals(productoEliminar)) {
+                if (!encontrado) {
+                    System.out.println("Producto no encontrado.");
+                }
+            } else if (opcion == 3) {
+                // Agregar producto (no cambia tamaño del array, solo simula el ingreso)
+                System.out.print("\nIngrese el nombre de la nueva fruta: ");
+                String nuevaFruta = scanner.nextLine();
+                System.out.print("Ingrese el precio de " + nuevaFruta + ": ");
+                double nuevoPrecio = scanner.nextDouble();
+                System.out.print("Ingrese el stock de " + nuevaFruta + ": ");
+                int nuevoStock = scanner.nextInt();
+                scanner.nextLine();  // Limpiar el buffer
 
-                            for (int j = i; j < 9; j++) {
-                                productos[j] = productos[j + 1];
-                                cantidades[j] = cantidades[j + 1];
-                                precios[j] = precios[j + 1];
-                            }
-                            indice--;
-                            System.out.println("Producto eliminado con éxito.");
-                            break;
-                        }
-                    }
-                    break;
-                case 3:
+                System.out.println("Nuevo producto agregado: " + nuevaFruta + " - $" + String.format("%.2f", nuevoPrecio * (1 + IVA)) + " (IVA incluido) - Stock: " + nuevoStock);
+            } else if (opcion == 4) {
+                // Eliminar producto (simulación, no cambia el array)
+                System.out.print("\nIngrese el nombre de la fruta a eliminar: ");
+                String frutaEliminar = scanner.nextLine().toLowerCase();
+                boolean eliminada = false;
 
-                    System.out.println("Inventario:");
-                    for (int i = 0; i < indice; i++) {
-                        System.out.println("Producto: " + productos[i]);
-                        System.out.println("Cantidad: " + cantidades[i]);
-                        System.out.println("Precio: " + precios[i]);
-                        System.out.println();
+                for (int i = 0; i < frutas.length; i++) {
+                    if (frutas[i].toLowerCase().equals(frutaEliminar)) {
+                        System.out.println("Producto eliminado: " + frutas[i]);
+                        eliminada = true;
+                        break;
                     }
-                    break;
-                case 4:
-                    // Buscar producto
-                    System.out.println("Ingrese el nombre del producto a buscar:");
-                    scanner.nextLine();
-                    String productoBuscar = scanner.nextLine();
-                    boolean encontrado = false;
-                    for (int i = 0; i < indice; i++) {
-                        if (productos[i].equals(productoBuscar)) {
-                            System.out.println("Producto encontrado:");
-                            System.out.println("Cantidad: " + cantidades[i]);
-                            System.out.println("Precio: " + precios[i]);
-                            encontrado = true;
-                            break;
-                        }
-                    }
-                    if (!encontrado) {
-                        System.out.println("Producto no encontrado.");
-                    }
-                    break;
-                case 5:
+                }
 
-                    System.exit(0);
-                    break;
-                default:
-                    System.out.println("Opción inválida.");
+                if (!eliminada) {
+                    System.out.println("No se encontró la fruta.");
+                }
+            } else if (opcion == 5) {
+                // Salir del programa
+                System.out.println("Gracias por usar el sistema de inventario.");
+                continuar = false;
+            } else {
+                System.out.println("Opción no válida, intente nuevamente.");
             }
         }
+
+        scanner.close();
     }
 }
