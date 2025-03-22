@@ -23,18 +23,6 @@ public class Main {
         productos[3] = "Fresa";
         productos[4] = "Mango";
 
-        cantidades[0] = 10;
-        cantidades[1] = 20;
-        cantidades[2] = 15;
-        cantidades[3] = 30;
-        cantidades[4] = 25;
-
-        precios[0] = 1.50;
-        precios[1] = 2.00;
-        precios[2] = 1.75;
-        precios[3] = 3.00;
-        precios[4] = 2.50;
-
         for (int i = 0; i < 5; i++) {
             preciosConIva[i] = precios[i] * (1 + iva);
         }
