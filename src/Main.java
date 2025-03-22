@@ -1,19 +1,33 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Arrays para gestionar la información del inventario
-        String[] frutas = {"Manzana", "Banana", "Naranja", "Pera", "Uva"};
-        double[] precios = {1.00, 0.75, 0.80, 1.20, 2.50};  // Precio por unidad
-        int[] stock = {10, 15, 12, 8, 20};
+        // Usamos ArrayList para que el inventario sea dinámico
+        ArrayList<String> frutas = new ArrayList<>();
+        ArrayList<Double> precios = new ArrayList<>();
+        ArrayList<Integer> stock = new ArrayList<>();
         final double IVA = 0.12;
+
+        // Agregamos algunas frutas iniciales
+        frutas.add("Manzana");
+        precios.add(1.00);
+        stock.add(10);
+
+        frutas.add("Banana");
+        precios.add(0.75);
+        stock.add(15);
+
+        frutas.add("Naranja");
+        precios.add(0.80);
+        stock.add(12);
 
         boolean continuar = true;
 
         while (continuar) {
-            // Menú de opciones
+
             System.out.println("Tienda de Frutas");
             System.out.println("1. Ver productos");
             System.out.println("2. Buscar un producto");
@@ -27,20 +41,20 @@ public class Main {
             if (opcion == 1) {
 
                 System.out.println("\nInventario:");
-                for (int i = 0; i < frutas.length; i++) {
-                    double precioConIVA = precios[i] * (1 + IVA);
-                    System.out.println((i + 1) + ". " + frutas[i] + " - $" + String.format("%.2f", precioConIVA) + " (IVA incluido) - Stock: " + stock[i]);
+                for (int i = 0; i < frutas.size(); i++) {
+                    double precioConIVA = precios.get(i) * (1 + IVA);
+                    System.out.println((i + 1) + ". " + frutas.get(i) + " - $" + String.format("%.2f", precioConIVA) + " (IVA incluido) - Stock: " + stock.get(i));
                 }
             } else if (opcion == 2) {
-                // Buscar producto
+
                 System.out.print("\nIngrese el nombre de la fruta a buscar: ");
                 String nombreBusqueda = scanner.nextLine().toLowerCase();
                 boolean encontrado = false;
 
-                for (int i = 0; i < frutas.length; i++) {
-                    if (frutas[i].toLowerCase().equals(nombreBusqueda)) {
-                        double precioConIVA = precios[i] * (1 + IVA);
-                        System.out.println("Producto encontrado: " + frutas[i] + " - $" + String.format("%.2f", precioConIVA) + " - Stock: " + stock[i]);
+                for (int i = 0; i < frutas.size(); i++) {
+                    if (frutas.get(i).toLowerCase().equals(nombreBusqueda)) {
+                        double precioConIVA = precios.get(i) * (1 + IVA);
+                        System.out.println("Producto encontrado: " + frutas.get(i) + " - $" + String.format("%.2f", precioConIVA) + " - Stock: " + stock.get(i));
                         encontrado = true;
                         break;
                     }
@@ -50,7 +64,7 @@ public class Main {
                     System.out.println("Producto no encontrado.");
                 }
             } else if (opcion == 3) {
-                // Agregar producto (no cambia tamaño del array, solo simula el ingreso)
+
                 System.out.print("\nIngrese el nombre de la nueva fruta: ");
                 String nuevaFruta = scanner.nextLine();
                 System.out.print("Ingrese el precio de " + nuevaFruta + ": ");
@@ -59,16 +73,24 @@ public class Main {
                 int nuevoStock = scanner.nextInt();
                 scanner.nextLine();  // Limpiar el buffer
 
+
+                frutas.add(nuevaFruta);
+                precios.add(nuevoPrecio);
+                stock.add(nuevoStock);
+
                 System.out.println("Nuevo producto agregado: " + nuevaFruta + " - $" + String.format("%.2f", nuevoPrecio * (1 + IVA)) + " (IVA incluido) - Stock: " + nuevoStock);
             } else if (opcion == 4) {
-                // Eliminar producto (simulación, no cambia el array)
+
                 System.out.print("\nIngrese el nombre de la fruta a eliminar: ");
                 String frutaEliminar = scanner.nextLine().toLowerCase();
                 boolean eliminada = false;
 
-                for (int i = 0; i < frutas.length; i++) {
-                    if (frutas[i].toLowerCase().equals(frutaEliminar)) {
-                        System.out.println("Producto eliminado: " + frutas[i]);
+                for (int i = 0; i < frutas.size(); i++) {
+                    if (frutas.get(i).toLowerCase().equals(frutaEliminar)) {
+                        System.out.println("Producto eliminado: " + frutas.get(i));
+                        frutas.remove(i);
+                        precios.remove(i);
+                        stock.remove(i);
                         eliminada = true;
                         break;
                     }
