@@ -2,12 +2,35 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
         String[] productos = new String[10];
         int[] cantidades = new int[10];
         double[] precios = new double[10];
         int opcion;
         int indice = 0;
+
+
+
+        productos[0] = "manzana";
+        productos[1] = "platanos";
+        productos[2] = "naranja";
+        productos[3] = "fresa";
+        productos[4] = "mango";
+
+
+        cantidades[0] = 10;
+        cantidades[1] = 20;
+        cantidades[2] = 15;
+        cantidades[3] = 30;
+        cantidades[4] = 25;
+
+
+        precios[0] = 15;
+        precios[1] = 10;
+        precios[2] = 11;
+        precios[3] = 4;
+        precios[4] = 5;
 
 
         while (true) {
