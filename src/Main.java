@@ -6,6 +6,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
 
+        System.out.println("Tienda Web De frutas");
+
         ArrayList<String> frutas = new ArrayList<>();
         ArrayList<Double> precios = new ArrayList<>();
         ArrayList<Integer> stock = new ArrayList<>();
