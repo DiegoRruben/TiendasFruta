@@ -32,9 +32,6 @@ public class Main {
         precios.add(7.10);
         stock.add(8);
 
-
-
-
         boolean continuar = true;
 
         while (continuar) {
