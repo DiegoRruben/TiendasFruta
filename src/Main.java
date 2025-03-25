@@ -24,6 +24,17 @@ public class Main {
         precios.add(3.30);
         stock.add(18);
 
+        frutas.add("Aguacate");
+        precios.add(5.90);
+        stock.add(12);
+
+        frutas.add("Pera");
+        precios.add(7.10);
+        stock.add(8);
+
+
+
+
         boolean continuar = true;
 
         while (continuar) {
@@ -36,7 +47,7 @@ public class Main {
             System.out.print("Seleccione una opción: ");
 
             int opcion = scanner.nextInt();
-            scanner.nextLine();  // Limpiar buffer
+            scanner.nextLine();
 
             switch (opcion) {
                 case 1:
