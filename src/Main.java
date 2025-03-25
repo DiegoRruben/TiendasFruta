@@ -22,7 +22,7 @@ public class Main {
 
         frutas.add("Naranja");
         precios.add(3.30);
-        stock.add(16);
+        stock.add(18);
 
         boolean continuar = true;
 
