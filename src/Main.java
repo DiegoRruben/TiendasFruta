@@ -35,7 +35,7 @@ public class Main {
         boolean continuar = true;
 
         while (continuar) {
-            System.out.println("\nTienda de Frutas");
+            System.out.println("Tienda de Frutas");
             System.out.println("1. Ver productos");
             System.out.println("2. Buscar un producto");
             System.out.println("3. Agregar producto");
@@ -48,16 +48,14 @@ public class Main {
 
             switch (opcion) {
                 case 1:
-                    System.out.println("\nInventario:");
-                    System.out.println("-----------------------------------------");
+                    System.out.println("Inventario:");
+
                     System.out.printf("%-10s %-10s %-10s%n", "Fruta", "Precio(Q)", "Stock");
-                    System.out.println("-----------------------------------------");
 
                     for (int i = 0; i < frutas.size(); i++) {
                         double precioConIVA = precios.get(i) * (1 + IVA);
                         System.out.printf("%-10s Q%-9.2f %-10d%n", frutas.get(i), precioConIVA, stock.get(i));
                     }
-                    System.out.println("-----------------------------------------");
                     break;
 
                 case 2:
@@ -120,7 +118,7 @@ public class Main {
                     break;
 
                 case 5:
-                    System.out.println("Gracias por usar la Tienda de Frutas. ¡Vuelva pronto!");
+                    System.out.println("gracias por visitarnos");
                     continuar = false;
                     break;
 
